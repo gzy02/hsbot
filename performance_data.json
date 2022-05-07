@@ -1,0 +1,225 @@
+{
+    "render_as": "table",
+    "series": {
+        "metadata": {},
+        "data": {
+            "DEMONHUNTER": [
+                {
+                    "game_type": 2,
+                    "win_rate": 55.36
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 53.98
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 46.87
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 49.88
+                }
+            ],
+            "DRUID": [
+                {
+                    "game_type": 2,
+                    "win_rate": 47.47
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 54.22
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 49.24
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 52.15
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 55.87
+                }
+            ],
+            "HUNTER": [
+                {
+                    "game_type": 2,
+                    "win_rate": 53.34
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 37.3
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 51.35
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 49.56
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 47.7
+                }
+            ],
+            "MAGE": [
+                {
+                    "game_type": 2,
+                    "win_rate": 49.6
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 48.19
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 50.07
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 47.26
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 44.24
+                }
+            ],
+            "PALADIN": [
+                {
+                    "game_type": 2,
+                    "win_rate": 52.78
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 52.09
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 52.3
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 52.48
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 48.08
+                }
+            ],
+            "PRIEST": [
+                {
+                    "game_type": 2,
+                    "win_rate": 40.44
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 39.07
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 47.14
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 51.38
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 41.51
+                }
+            ],
+            "ROGUE": [
+                {
+                    "game_type": 2,
+                    "win_rate": 42.44
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 49.33
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 52.78
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 51.71
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 46.79
+                }
+            ],
+            "SHAMAN": [
+                {
+                    "game_type": 2,
+                    "win_rate": 45.42
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 49.5
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 51.39
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 51.8
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 47.32
+                }
+            ],
+            "WARLOCK": [
+                {
+                    "game_type": 2,
+                    "win_rate": 41.06
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 44.59
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 48.09
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 44.8
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 50.91
+                }
+            ],
+            "WARRIOR": [
+                {
+                    "game_type": 2,
+                    "win_rate": 51.87
+                },
+                {
+                    "game_type": 3,
+                    "win_rate": 37.92
+                },
+                {
+                    "game_type": 30,
+                    "win_rate": 45.0
+                },
+                {
+                    "game_type": 55,
+                    "win_rate": 50.02
+                },
+                {
+                    "game_type": 58,
+                    "win_rate": 50.8
+                }
+            ]
+        }
+    },
+    "as_of": "2022-05-06T11:53:47Z"
+}

@@ -37,7 +37,6 @@ async def get_rank_data(url:str,headers:dict,data:dict) -> dict:
                 res['status']=0
         except:
             res['status']=0
-            
         return res
         
 async def solve(rank_query,keyword:str,mode:str):
@@ -64,3 +63,28 @@ async def solve(rank_query,keyword:str,mode:str):
             logger.info('获取排名时出现错误')
     else:
         logger.info('获取排名前出现错误')
+
+
+async def get_performance_data() -> dict:
+    """
+    :return: performance data
+    """
+    url = 'https://hsreplay.net/analytics/query/player_class_performance_summary/'
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36 Edg/100.0.1185.44'
+    }
+    async with httpx.AsyncClient() as client:
+        res=dict()
+        try:
+            resp = await client.get(url, headers=headers)
+            resp_json=resp.json()
+            if resp.status_code==200:
+                res['status']=1
+                res['data']=resp_json['series']['data']
+            else:
+                res['status']=0
+        except:
+            res['status']=0
+            
+        return res
+        
