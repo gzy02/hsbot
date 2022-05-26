@@ -6,220 +6,220 @@
             "DEMONHUNTER": [
                 {
                     "game_type": 2,
-                    "win_rate": 55.36
+                    "win_rate": 45.65
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 53.98
+                    "win_rate": 50.88
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 46.87
+                    "win_rate": 45.4
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 49.88
+                    "win_rate": 48.22
                 }
             ],
             "DRUID": [
                 {
                     "game_type": 2,
-                    "win_rate": 47.47
+                    "win_rate": 45.24
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 54.22
+                    "win_rate": 51.75
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 49.24
+                    "win_rate": 49.52
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 52.15
+                    "win_rate": 52.04
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 55.87
+                    "win_rate": 53.23
                 }
             ],
             "HUNTER": [
                 {
                     "game_type": 2,
-                    "win_rate": 53.34
+                    "win_rate": 52.41
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 37.3
+                    "win_rate": 39.87
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 51.35
+                    "win_rate": 47.57
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 49.56
+                    "win_rate": 52.0
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 47.7
+                    "win_rate": 48.7
                 }
             ],
             "MAGE": [
                 {
                     "game_type": 2,
-                    "win_rate": 49.6
+                    "win_rate": 50.27
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 48.19
+                    "win_rate": 47.92
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 50.07
+                    "win_rate": 49.31
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 47.26
+                    "win_rate": 48.39
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 44.24
+                    "win_rate": 46.26
                 }
             ],
             "PALADIN": [
                 {
                     "game_type": 2,
-                    "win_rate": 52.78
+                    "win_rate": 54.22
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 52.09
+                    "win_rate": 51.73
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 52.3
+                    "win_rate": 52.54
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 52.48
+                    "win_rate": 51.28
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 48.08
+                    "win_rate": 52.61
                 }
             ],
             "PRIEST": [
                 {
                     "game_type": 2,
-                    "win_rate": 40.44
+                    "win_rate": 46.13
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 39.07
+                    "win_rate": 42.01
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 47.14
+                    "win_rate": 46.99
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 51.38
+                    "win_rate": 45.71
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 41.51
+                    "win_rate": 41.14
                 }
             ],
             "ROGUE": [
                 {
                     "game_type": 2,
-                    "win_rate": 42.44
+                    "win_rate": 48.88
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 49.33
+                    "win_rate": 53.81
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 52.78
+                    "win_rate": 54.47
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 51.71
+                    "win_rate": 50.86
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 46.79
+                    "win_rate": 54.36
                 }
             ],
             "SHAMAN": [
                 {
                     "game_type": 2,
-                    "win_rate": 45.42
+                    "win_rate": 47.33
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 49.5
+                    "win_rate": 51.71
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 51.39
+                    "win_rate": 50.6
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 51.8
+                    "win_rate": 52.01
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 47.32
+                    "win_rate": 44.62
                 }
             ],
             "WARLOCK": [
                 {
                     "game_type": 2,
-                    "win_rate": 41.06
+                    "win_rate": 50.18
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 44.59
+                    "win_rate": 49.1
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 48.09
+                    "win_rate": 48.63
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 44.8
+                    "win_rate": 49.55
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 50.91
+                    "win_rate": 50.41
                 }
             ],
             "WARRIOR": [
                 {
                     "game_type": 2,
-                    "win_rate": 51.87
+                    "win_rate": 50.98
                 },
                 {
                     "game_type": 3,
-                    "win_rate": 37.92
+                    "win_rate": 36.52
                 },
                 {
                     "game_type": 30,
-                    "win_rate": 45.0
+                    "win_rate": 47.79
                 },
                 {
                     "game_type": 55,
-                    "win_rate": 50.02
+                    "win_rate": 49.84
                 },
                 {
                     "game_type": 58,
-                    "win_rate": 50.8
+                    "win_rate": 49.42
                 }
             ]
         }
     },
-    "as_of": "2022-05-06T11:53:47Z"
+    "as_of": "2022-05-26T05:54:36Z"
 }
