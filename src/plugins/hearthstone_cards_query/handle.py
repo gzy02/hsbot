@@ -51,10 +51,20 @@ async def _reset_database(event: MessageEvent):
     read_json.init_database_from_json(json_url)
     await reset_database.send(message="重置完成")
 
-JJCCardsSet = ['CORE', 'LOE', 'OG', 'TGT',
+JJCCardsSet = ['CORE', 'BOOMSDAY', 'DRAGONS', 'THE_BARRENS',
                'STORMWIND', 'THE_SUNKEN_CITY', 'ALTERAC_VALLEY']
 """
 当前竞技场轮换卡池：
+
+核心系列
+砰砰计划BOOMSDAY
+巨龙降临DRAGONS
+贫瘠之地THE_BARRENS 
+暴风城
+奥特兰克
+探寻沉没之城（潮汐王座）
+
+旧：
 核心系列
 探险者协会
 上古之神的低语
