@@ -6,7 +6,7 @@ database = pw.MySQLDatabase(
     'hearthstone',  #数据库得自己建立，peewee只有建立数据表的权限
     host='127.0.0.1',
     user='root',
-    passwd='tongjigzy_02',  #记得改密码，不然你可能调试不了
+    passwd='tj_market',  #记得改密码，不然你可能调试不了
     charset='utf8',
     port=3306)
 

@@ -1,0 +1,77 @@
+from functools import wraps
+import json
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment,Message
+from . import models
+#管理员qq号json文件地址
+admin_qq_number_json_path="./json_file/admin_qq_number.json"
+#jjc卡组系列json文件地址
+JJCCardsSetPath="./json_file/JJCCardsSet.json"
+
+SYSTEM_ADMIN_QQ_NUMBER=1262454489
+
+#全名对应英文名
+cardClassMap = {"法师": "MAGE", "猎人": "HUNTER", "牧师": "PRIEST", "术士": "WARLOCK", "潜行者": "ROGUE",
+                "德鲁伊": "DRUID", "萨满": "SHAMAN", "战士": "WARRIOR", "圣骑士": "PALADIN", "恶魔猎手": "DEMONHUNTER"}
+#别名
+aliasesClassMap = {"法": "法师", "猎": "猎人", "牧": "牧师", "战": "战士", "贼": "潜行者", "德": "德鲁伊",
+                                   "萨": "萨满祭司", "萨满": "萨满祭司", "术": "术士", "骑士": "圣骑士", "骑": "圣骑士", "瞎": "恶魔猎手", "瞎子": "恶魔猎手"}
+
+#JJCCardsSet = ['CORE', 'BOOMSDAY', 'DRAGONS', 'THE_BARRENS',
+#               'STORMWIND', 'THE_SUNKEN_CITY', 'ALTERAC_VALLEY']
+"""
+当前竞技场轮换卡池：
+
+核心系列
+砰砰计划BOOMSDAY
+巨龙降临DRAGONS
+贫瘠之地THE_BARRENS 
+暴风城
+奥特兰克
+探寻沉没之城（潮汐王座）
+"""
+
+def verify_admin(Matcher):
+    """验证是否是管理员
+    
+    Args:
+        Matcher (Type[Matcher]): 事件响应器类
+    """
+    def verify_admin_decorator(func):
+        @wraps(func)
+        async def wrapped_function(*args,**kwargs):
+            try:
+                event=kwargs['event']
+                fd = open(admin_qq_number_json_path, "r", encoding="utf8")
+                admin_qq_number = json.loads(fd.read())["admin_qq_number"]
+                fd.close()
+            except:
+                await Matcher.finish(f'程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]')
+            if event.get_user_id() not in admin_qq_number:
+                print(event.get_session_id())
+                message=f'您不是hsbot的管理员哦，请联系管理员使用该指令~[CQ:face,id=178]\n管理员QQ号列表：{str(admin_qq_number)}'
+                if event.message_type=="group":
+                    message=f'[CQ:at,qq={event.get_user_id()}]'+message
+                    await Matcher.finish(Message(message))
+                else:
+                    await Matcher.finish(Message(message=message))
+            await func(*args,**kwargs)
+        return wrapped_function
+    return verify_admin_decorator
+
+def connect_and_close_database(func):
+    """
+    装饰器，用于连接和断开数据库
+    """
+    @wraps(func)
+    async def wrapped_function(*args, **kwargs):
+        # 连接数据库
+        if models.database.is_closed():
+            models.database.connect()
+        
+        await func(*args, **kwargs)
+        
+        # 请求结束，关数据库
+        if not models.database.is_closed():
+            models.database.close()
+
+    return wrapped_function
