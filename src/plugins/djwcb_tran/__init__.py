@@ -23,7 +23,7 @@ def get_translation(input, dict_path):
             output += tone
     
     return output
-djwcb=on_startswith(msg=("生僻字转换","djw","djwcb"),priority=1,block=True)
+djwcb=on_startswith(msg=("生僻字转换 ","djw ","djwcb "),priority=1,block=True)
 @djwcb.handle()
 async def _djwcb(event:MessageEvent):
     for i in event.get_message():#获取该事件中每条消息
