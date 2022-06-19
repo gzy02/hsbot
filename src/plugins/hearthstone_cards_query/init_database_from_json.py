@@ -2,12 +2,13 @@ from . import models
 import json
 
 
-def init_database_from_json(json_url="./cards.collectible.json"):
+def init_database_from_json(json_url="./json_file/cards.collectible.json"):
+    """读取json文件，更新数据库"""
     fd = open(json_url, "r", encoding="utf8")
     cards_list = json.loads(fd.read())
     fd.close()
     for card in cards_list:
-        if card['set'] != "HERO_SKINS" and card['set'] != "VANILLA":  # 皮肤或者过时的卡牌
+        if card['set'] != "HERO_SKINS" and card['set'] != "VANILLA":  # 皮肤或者过时的卡牌，不存储
             try:
                 text = ""
                 if 'text' in card.keys():
@@ -58,7 +59,7 @@ def init_database_from_json(json_url="./cards.collectible.json"):
                     armor = 0
                     if 'armor' in card.keys():
                         armor = card['armor']
-                    cost = -1  # 可收集英雄皮肤没有费用
+                    cost = -1  
                     if 'cost' in card.keys():
                         cost = card['cost']
                     models.HEROCards.create(

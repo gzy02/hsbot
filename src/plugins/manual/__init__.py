@@ -1,13 +1,14 @@
 
 from nonebot import on_command,on_fullmatch
-from nonebot.adapters.onebot.v11 import Bot, MessageEvent
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent,Message
 from time import sleep
 manual = on_fullmatch(
     msg=("manual", "使用手册", "手册", "指令","man"), priority=1, block=True)
 
 
 @manual.handle()
-async def _(bot: Bot, event: MessageEvent):
+async def _manual(bot: Bot, event: MessageEvent):
+    """使用手册"""
     #sleep(1)
     #await manual.send("HSBot 使用手册")
     #sleep(1)
@@ -45,5 +46,7 @@ async def _(bot: Bot, event: MessageEvent):
     message_str += "\n9. 卡图查询 指令: \n<查卡图/查图片/查牌面/查卡面/查描述> [卡牌列表]\n例: 查卡图 骑士队长"
     message_str += "\n10.卡组图片生成 \n无指令，收到信息后判断是否为炉石卡组，自动生成图片"
     message_str += "\n11.重置数据库(游戏更新时管理员可以用此指令) 指令: \n重置数据库"
-    await manual.send(message=message_str.strip())
+    if event.message_type=="group":
+        message_str=f'[CQ:at,qq={event.get_user_id()}]'+message_str
+    await manual.send(message=Message(message_str))
     

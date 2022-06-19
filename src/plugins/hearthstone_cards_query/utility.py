@@ -6,9 +6,9 @@ from . import models
 admin_qq_number_json_path="./json_file/admin_qq_number.json"
 #jjc卡组系列json文件地址
 JJCCardsSetPath="./json_file/JJCCardsSet.json"
-
+#系统管理员QQ号，这里直接存内存了
 SYSTEM_ADMIN_QQ_NUMBER=1262454489
-
+database_enable=True#是否允许访问数据库
 #全名对应英文名
 cardClassMap = {"法师": "MAGE", "猎人": "HUNTER", "牧师": "PRIEST", "术士": "WARLOCK", "潜行者": "ROGUE",
                 "德鲁伊": "DRUID", "萨满": "SHAMAN", "战士": "WARRIOR", "圣骑士": "PALADIN", "恶魔猎手": "DEMONHUNTER"}
@@ -29,8 +29,9 @@ aliasesClassMap = {"法": "法师", "猎": "猎人", "牧": "牧师", "战": "�
 奥特兰克
 探寻沉没之城（潮汐王座）
 """
-
-def verify_admin(Matcher):
+from typing import Any, Set, Dict, List, Type, Tuple, Union, Optional
+from nonebot.matcher import Matcher
+def verify_admin(Matcher:Type[Matcher]):
     """验证是否是管理员
     
     Args:
@@ -45,7 +46,7 @@ def verify_admin(Matcher):
                 admin_qq_number = json.loads(fd.read())["admin_qq_number"]
                 fd.close()
             except:
-                await Matcher.finish(f'程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]')
+                await Matcher.finish(f'[管理员验证]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]')
             if event.get_user_id() not in admin_qq_number:
                 print(event.get_session_id())
                 message=f'您不是hsbot的管理员哦，请联系管理员使用该指令~[CQ:face,id=178]\n管理员QQ号列表：{str(admin_qq_number)}'
@@ -64,14 +65,16 @@ def connect_and_close_database(func):
     """
     @wraps(func)
     async def wrapped_function(*args, **kwargs):
-        # 连接数据库
-        if models.database.is_closed():
-            models.database.connect()
-        
-        await func(*args, **kwargs)
-        
-        # 请求结束，关数据库
-        if not models.database.is_closed():
-            models.database.close()
-
+        if database_enable==True:
+            # 连接数据库
+            if models.database.is_closed():
+                models.database.connect()
+            
+            await func(*args, **kwargs)
+            
+            # 请求结束，关数据库
+            if not models.database.is_closed():
+                models.database.close()
+        else:#很快数据库就重置完了，不急，让用户等几秒
+            pass
     return wrapped_function
