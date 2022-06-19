@@ -6,7 +6,7 @@ from . import reset_database
 from . import models
 from . import init_database_from_json
 from . import ask_json
-from nonebot.adapters.onebot.v11 import Bot, MessageEvent
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent,Message
 import os
 
 @reset_database.handle()
@@ -15,7 +15,10 @@ import os
 async def _reset_database(bot: Bot, event: MessageEvent):
     """重置数据库"""
     try:
-        await reset_database.send(message="开始重置...")
+        res_str="开始重置..."
+        if event.message_type=="group":
+            res_str=f'[CQ:at,qq={event.get_user_id()}]'+res_str
+        await reset_database.send(message=Message(res_str))
 
         database_enable=True
         
@@ -42,7 +45,12 @@ async def _reset_database(bot: Bot, event: MessageEvent):
         database_enable=False
         if os.path.exists(json_url):
             os.remove(json_url)
-        await reset_database.send(message="重置完成")
+            
+        res_str="重置完成"
+        if event.message_type=="group":
+            res_str=f'[CQ:at,qq={event.get_user_id()}]'+res_str
+        await reset_database.send(message=Message(res_str))
+
     except Exception as e:
         await reset_database.finish((f'[重置数据库]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}'))
         

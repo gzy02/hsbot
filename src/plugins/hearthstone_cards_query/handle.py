@@ -3,7 +3,7 @@ from . import minion_query, cards_query, jjc_aomi_query, jjc_choose,class_perfor
 from . import models
 from .query import find_minion_by_body, find_card_by_text,find_card_by_name
 from . import ask_json
-from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment
+from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment,Message
 import json
 
 @jjc_aomi_query.handle()
@@ -33,7 +33,9 @@ async def _jjc_aomi_query(bot: Bot, event: MessageEvent):
                     if j.cardClass == cardClassMap[zhiye] and j.set in JJCCardsSet:
                         message_str += str(i + 1) + '. ' + j.name + '\n'
                         i += 1
-                await jjc_aomi_query.send(message=message_str.strip())
+                if event.message_type=="group":
+                    message_str=f'[CQ:at,qq={event.get_user_id()}]'+message_str
+                await jjc_aomi_query.send(message=Message(message_str.strip()))
             except Exception as e: 
                 await jjc_aomi_query.send(message=f"您的输入有误，请输入“jjc奥秘 xxx”，例如“jjc奥秘 法师”")
     except Exception as e:
@@ -54,7 +56,9 @@ async def _cards_query(bot: Bot, event: MessageEvent):
                 for i, j in enumerate(tep):
                     message_str += str(i + 1) + '. ' + j.name + '\n'
                 message_str+="如需浏览具体卡牌信息，可通过“查描述+卡牌名”指令查询"
-                await cards_query.send(message=message_str.strip())
+                if event.message_type=="group":
+                    message_str=f'[CQ:at,qq={event.get_user_id()}]'+message_str
+                await cards_query.send(message=Message(message_str.strip()))
             except: 
                 await cards_query.send(message="您的输入有误，请输入“查卡牌 xxx”，例如“查卡牌 叫嚣的中士”")
     except Exception as e:
@@ -85,7 +89,10 @@ async def _minion_query(bot: Bot, event: MessageEvent):
                         minion_health = value_list[0][2]
                         message_str = find_minion_by_body(
                             minion_cost, minion_attack, minion_health)
-                        await minion_query.send(message=message_str.strip())
+                        message_str+="如需浏览具体卡牌信息，可通过“查描述+卡牌名”指令查询"
+                        if event.message_type=="group":
+                            message_str=f'[CQ:at,qq={event.get_user_id()}]'+message_str
+                        await minion_query.send(message=Message(message_str.strip()))
                     else:
                         await minion_query.send(message="您的输入有误，请输入“查随从 x-x-x”，例如“查随从 9-3-9”")
                 except:
@@ -171,7 +178,9 @@ async def _jjc_choose(bot: Bot, event: MessageEvent):
                     if recommand_card == "":
                         await jjc_choose.send(message="未在当前jjc卡池中找到您的输入卡牌，请重新输入")
                     else:
-                        await jjc_choose.send(message=message_str.strip())
+                        if event.message_type=="group":
+                            message_str=f'[CQ:at,qq={event.get_user_id()}]'+message_str
+                        await jjc_choose.send(message=Message(message_str.strip()))
         else:
             await jjc_choose.send(message="您的输入有误，请输入“jjc选牌 <职业> <卡牌名>”，例如“jjc选牌 德 奇迹生长”")
     except Exception as e:
