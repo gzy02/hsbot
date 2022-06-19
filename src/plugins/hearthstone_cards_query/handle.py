@@ -82,7 +82,10 @@ async def _minion_query(bot: Bot, event: MessageEvent):
                         minion_health = value_list[2]
                         message_str = find_minion_by_body(
                             minion_cost, minion_attack, minion_health)
-                        await minion_query.send(message=message_str.strip())
+                        message_str+="如需浏览具体卡牌信息，可通过“查描述+卡牌名”指令查询"
+                        if event.message_type=="group":
+                            message_str=f'[CQ:at,qq={event.get_user_id()}]'+message_str
+                        await minion_query.send(message=Message(message_str.strip()))
                     elif len(value_list) == 1:  # 类似"939" 不带 -
                         minion_cost = value_list[0][0]
                         minion_attack = value_list[0][1]
