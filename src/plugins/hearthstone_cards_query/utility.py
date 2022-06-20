@@ -3,6 +3,7 @@ from functools import wraps
 import json
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment,Message
 from . import models
+from time import sleep
 #管理员qq号json文件地址
 admin_qq_number_json_path="./json_file/admin_qq_number.json"
 #jjc卡组系列json文件地址
@@ -55,16 +56,20 @@ def connect_and_close_database(func):
     """
     @wraps(func)
     async def wrapped_function(*args, **kwargs):
-        if database_enable==True:
-            # 连接数据库
-            if models.database.is_closed():
-                models.database.connect()
-            
-            await func(*args, **kwargs)
-            
-            # 请求结束，关数据库
-            if not models.database.is_closed():
-                models.database.close()
-        else:#很快数据库就重置完了，不急，让用户等几秒
-            pass
+        sleep_cnt=0
+        while database_enable==False:
+            sleep(1)
+            sleep_cnt+=1
+            if sleep_cnt>10:#很快数据库就重置完了，不急，让用户等至多10秒
+                break
+
+        # 连接数据库
+        if models.database.is_closed():
+            models.database.connect()
+        
+        await func(*args, **kwargs)
+        
+        # 请求结束，关数据库
+        if not models.database.is_closed():
+            models.database.close()
     return wrapped_function

@@ -158,6 +158,8 @@ async def _admin_query():
 async def _reset_jjcCardsSet(bot:Bot,event:MessageEvent):
     """重置jjc"""
     try:
+        global database_enable
+        database_enable=False
         JJCCardsSet_dict={"JJCCardsSet": []}
         all_set=[]#所有系列名
         for i in query.find_all_set():
@@ -179,5 +181,6 @@ async def _reset_jjcCardsSet(bot:Bot,event:MessageEvent):
                 await reset_jjcCardsSet.send(f'已重置当前jjc环境，可使用指令“查系列jjc”验证')
         else:
             await reset_jjcCardsSet.send(f'您的输入有误，请输入“重置jjc <系列名列表>”')
+        database_enable=True
     except Exception as e:
         await reset_jjcCardsSet.finish((f'[重置jjc]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}'))
