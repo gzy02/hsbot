@@ -53,13 +53,10 @@ def verify_admin(Matcher:Type[Matcher]):
             except:
                 await Matcher.finish(f'[管理员验证]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]')
             if event.get_user_id() not in admin_qq_number:
-                print(event.get_session_id())
                 message=f'您不是hsbot的管理员哦，请联系管理员使用该指令~[CQ:face,id=178]\n管理员QQ号列表：{str(admin_qq_number)}'
                 if event.message_type=="group":
                     message=f'[CQ:at,qq={event.get_user_id()}]'+message
-                    await Matcher.finish(Message(message))
-                else:
-                    await Matcher.finish(Message(message=message))
+                await Matcher.finish(Message(message))
             await func(*args,**kwargs)
         return wrapped_function
     return verify_admin_decorator

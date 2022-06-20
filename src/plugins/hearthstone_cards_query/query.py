@@ -15,3 +15,6 @@ def find_card_by_text(text: str)->peewee.ModelSelect:
 
 def find_card_by_name(name:str)->peewee.ModelSelect:
     return models.Cards.select(models.Cards.name,models.Cards.cardClass, models.Cards.dbfid, models.Cards.id, models.Cards.text,models.Cards.set).where((models.Cards.name.contains(name)))
+
+def find_all_set()->peewee.ModelSelect:
+    return models.Cards.select(models.Cards.set).distinct()
