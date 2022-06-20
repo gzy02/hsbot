@@ -1,3 +1,4 @@
+import nonebot
 from functools import wraps
 import json
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment,Message
@@ -7,7 +8,11 @@ admin_qq_number_json_path="./json_file/admin_qq_number.json"
 #jjc卡组系列json文件地址
 JJCCardsSetPath="./json_file/JJCCardsSet.json"
 #系统管理员QQ号，这里直接存内存了
-SYSTEM_ADMIN_QQ_NUMBER=1262454489
+driver = nonebot.get_driver()
+global_config = driver.config
+config=global_config.dict()
+SYSTEM_ADMIN_QQ_NUMBER=config['system_admin_qq_number']
+
 database_enable=True#是否允许访问数据库
 #全名对应英文名
 cardClassMap = {"法师": "MAGE", "猎人": "HUNTER", "牧师": "PRIEST", "术士": "WARLOCK", "潜行者": "ROGUE",

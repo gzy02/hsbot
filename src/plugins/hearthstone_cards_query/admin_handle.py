@@ -1,6 +1,4 @@
 #管理员才有权限的操作
-from logging import exception
-from tkinter import EXCEPTION
 from .utility import verify_admin,connect_and_close_database,SYSTEM_ADMIN_QQ_NUMBER,JJCCardsSetPath,admin_qq_number_json_path,database_enable
 from . import reset_database
 from . import models

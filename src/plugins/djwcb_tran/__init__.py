@@ -1,8 +1,14 @@
+import nonebot
 from nonebot import on_command, on_startswith
 from nonebot.adapters.onebot.v11 import Bot, Message,MessageEvent
 import pypinyin
 import csv
-SYSTEM_ADMIN_QQ_NUMBER=1262454489
+
+
+driver = nonebot.get_driver()
+global_config = driver.config
+config=global_config.dict()
+SYSTEM_ADMIN_QQ_NUMBER=config['system_admin_qq_number']
 
 def get_translation(input, dict_path):
     # load dict

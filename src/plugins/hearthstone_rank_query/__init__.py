@@ -5,7 +5,12 @@ from nonebot.adapters.onebot.v11 import MessageEvent
 from typing import Type
 from nonebot.matcher import Matcher
 from .ask_json import get_post_data,get_rank_data
-SYSTEM_ADMIN_QQ_NUMBER=1262454489
+import nonebot
+driver = nonebot.get_driver()
+global_config = driver.config
+config=global_config.dict()
+SYSTEM_ADMIN_QQ_NUMBER=config['system_admin_qq_number']
+
 rank_query = on_startswith(
     msg=("查标准", "查狂野", "查经典", "查战棋", "查战旗", "查佣兵", "查酒馆"), priority=1, block=False)
 

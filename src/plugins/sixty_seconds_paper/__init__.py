@@ -5,7 +5,11 @@ from nonebot.rule import to_me
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, MessageSegment,Message
 from . import ask_json
 
-SYSTEM_ADMIN_QQ_NUMBER=1262454489
+driver = nonebot.get_driver()
+global_config = driver.config
+config=global_config.dict()
+SYSTEM_ADMIN_QQ_NUMBER=config['system_admin_qq_number']
+
 sixty = on_command("60s", aliases={"早报", "60秒早报", "今日早报","每日早报"}, priority=4, block=True)
 
 
