@@ -13,4 +13,5 @@ jjcCardsSet_query=on_fullmatch(msg=("查系列","全系列"))
 
 from .handle import *
 from .admin_handle import *
+from .pic_handle import *
 #各系列名称可参考https://iyingdi.com/tz/post/5172746
