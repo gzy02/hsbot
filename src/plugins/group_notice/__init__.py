@@ -43,5 +43,5 @@ async def _group_increase(bot: Bot, event: Event) -> bool:
 group_increase = on_notice(_group_increase, priority=10, block=True)
 @group_increase.handle()
 async def _group_increase(bot: Bot, event: GroupIncreaseNoticeEvent):
-    return await group_increase.send(MessageSegment.at(event.get_user_id())+"欢迎入群")
+    return await group_increase.send(MessageSegment.at(event.get_user_id())+"欢迎新朋友~")
 
