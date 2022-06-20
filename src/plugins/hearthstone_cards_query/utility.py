@@ -21,23 +21,10 @@ cardClassMap = {"法师": "MAGE", "猎人": "HUNTER", "牧师": "PRIEST", "术�
 aliasesClassMap = {"法": "法师", "猎": "猎人", "牧": "牧师", "战": "战士", "贼": "潜行者", "德": "德鲁伊",
                                    "萨": "萨满祭司", "萨满": "萨满祭司", "术": "术士", "骑士": "圣骑士", "骑": "圣骑士", "瞎": "恶魔猎手", "瞎子": "恶魔猎手"}
 
-#JJCCardsSet = ['CORE', 'BOOMSDAY', 'DRAGONS', 'THE_BARRENS',
-#               'STORMWIND', 'THE_SUNKEN_CITY', 'ALTERAC_VALLEY']
-"""
-当前竞技场轮换卡池：
-
-核心系列
-砰砰计划BOOMSDAY
-巨龙降临DRAGONS
-贫瘠之地THE_BARRENS 
-暴风城
-奥特兰克
-探寻沉没之城（潮汐王座）
-"""
 from typing import Any, Set, Dict, List, Type, Tuple, Union, Optional
 from nonebot.matcher import Matcher
 def verify_admin(Matcher:Type[Matcher]):
-    """验证是否是管理员
+    """验证是否是管理员或系统管理员
     
     Args:
         Matcher (Type[Matcher]): 事件响应器类
@@ -46,12 +33,13 @@ def verify_admin(Matcher:Type[Matcher]):
         @wraps(func)
         async def wrapped_function(*args,**kwargs):
             try:
-                event=kwargs['event']
+                event: MessageEvent=kwargs['event']
                 fd = open(admin_qq_number_json_path, "r", encoding="utf8")
-                admin_qq_number = json.loads(fd.read())["admin_qq_number"]
+                admin_qq_number:list = json.loads(fd.read())["admin_qq_number"]
                 fd.close()
             except:
                 await Matcher.finish(f'[管理员验证]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]')
+            admin_qq_number.append(str(SYSTEM_ADMIN_QQ_NUMBER))#系统管理员也得加上去
             if event.get_user_id() not in admin_qq_number:
                 message=f'您不是hsbot的管理员哦，请联系管理员使用该指令~[CQ:face,id=178]\n管理员QQ号列表：{str(admin_qq_number)}'
                 if event.message_type=="group":

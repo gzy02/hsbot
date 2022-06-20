@@ -192,7 +192,7 @@ async def _pic_query(bot:Bot,event:MessageEvent):
                 except:
                     tep = find_card_by_name(text_list[i + 1])
                     if tep.count()<=0:
-                        await pic_query.send(message="您的输入有误，请输入“查卡图 <卡牌名>”，例如“查卡图 银背族长”")
+                        await pic_query.send(message="您的输入有误，请输入“查描述/查卡图 <卡牌名列表>”，例如“查描述 银背族长”")
 
                     for j in tep:
                         url=f"https://art.hearthstonejson.com/v1/render/latest/zhCN/256x/{j.id}.png"
