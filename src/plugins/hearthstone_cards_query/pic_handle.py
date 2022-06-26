@@ -17,8 +17,9 @@ import matplotlib.pyplot as plt
 
 def Get_jjc_image(rowLabels: list, cellText: list):
     """获取图片"""
-    plt.rcParams['font.sans-serif'] = ['MSYH', 'SimHei']  #字体
+    plt.rcParams['font.sans-serif'] = ['SimHei']  #字体
     fig = plt.figure(figsize=(7, len(rowLabels) / 2))  #调比例，还可根据胜率排个序
+    print(rowLabels)
     table = plt.table(cellText=cellText,
                       rowLabels=rowLabels,
                       loc='center',
