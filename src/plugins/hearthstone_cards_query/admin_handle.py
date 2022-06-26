@@ -5,6 +5,7 @@ from . import models
 from . import init_database_from_json
 from . import ask_json
 from . import query
+from .create_database import create_database
 from nonebot.adapters.onebot.v11 import Bot, MessageEvent, Message
 import os
 import json
@@ -23,8 +24,9 @@ async def _reset_database(bot: Bot, event: MessageEvent):
         await reset_database.send(message=Message(res_str))
 
         database_enable = False
-
+        create_database()  #删库，建库
         #删表
+        """
         if models.MINIONCards.table_exists:
             models.MINIONCards.drop_table()
         if models.SPELLCards.table_exists:
@@ -35,6 +37,7 @@ async def _reset_database(bot: Bot, event: MessageEvent):
             models.WEAPONCards.drop_table()
         if models.Cards.table_exists:
             models.Cards.drop_table()
+        """
         #建表
         models.Cards.create_table()
         models.MINIONCards.create_table()
