@@ -1,4 +1,5 @@
 {
     "python.formatting.provider": "yapf",
-    "files.associations": { "*.env*": "ssh_config" }
+    "files.associations": { "*.env*": "ssh_config" },
+    "files.encoding": "utf8"
 }
