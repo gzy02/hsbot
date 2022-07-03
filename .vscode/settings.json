@@ -1,5 +1,6 @@
 {
     "python.formatting.provider": "yapf",
-    "files.associations": { "*.env*": "ssh_config" },
+    "python.formatting.yapfArgs": ["--style", "{column_limit: 100}"],
+    "files.associations": { "*.env*": "ini", "*.toml": "ini" },
     "files.encoding": "utf8"
 }
