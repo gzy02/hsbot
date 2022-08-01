@@ -35,6 +35,8 @@ async def _reset_database(bot: Bot, event: MessageEvent):
             models.HEROCards.drop_table()
         if models.WEAPONCards.table_exists:
             models.WEAPONCards.drop_table()
+        if models.LOCATIONCards.table_exists:
+            models.LOCATIONCards.drop_table()
         if models.Cards.table_exists:
             models.Cards.drop_table()
         """
@@ -44,6 +46,7 @@ async def _reset_database(bot: Bot, event: MessageEvent):
         models.SPELLCards.create_table()
         models.WEAPONCards.create_table()
         models.HEROCards.create_table()
+        models.LOCATIONCards.create_table()
 
         #获取json文件
         json_url = "./json_file/cards.collectible.json"

@@ -68,6 +68,11 @@ def init_database_from_json(json_url="./json_file/cards.collectible.json"):
                                               cost=card['cost'],
                                               attack=card['attack'],
                                               durability=card['durability'])
+
+                elif card['type'] == "LOCATION":
+                    models.LOCATIONCards.create(Cardid=card['dbfId'],
+                                                cost=card['cost'],
+                                                health=card['health'])
             except Exception as e:
                 print(repr(e))
                 print(card)

@@ -22,8 +22,9 @@ class Cards(BaseModel):
     id = pw.CharField(max_length=32, null=False, unique=True)  # 卡牌的字符串标识
     name = pw.CharField(max_length=32, null=False, index=True)
     #随从牌、法术牌、英雄牌、武器牌
-    type = pw.CharField(max_length=32,
-                        constraints=[pw.Check('type in ("MINION", "SPELL", "HERO","WEAPON")')])
+    type = pw.CharField(
+        max_length=32,
+        constraints=[pw.Check('type in ("MINION", "SPELL", "HERO","WEAPON","LOCATION")')])
     #普通、稀有、史诗、传说、免费
     rarity = pw.CharField(
         max_length=32,
@@ -90,3 +91,9 @@ class WEAPONCards(BaseModel):
     attack = pw.IntegerField(null=False, constraints=[pw.Check('attack >= 0')])
     #耐久度
     durability = pw.IntegerField(null=False, constraints=[pw.Check('durability >= 0')])
+
+
+class LOCATIONCards(BaseModel):
+    Cardid = pw.ForeignKeyField(Cards, primary_key=True, null=False, unique=True, index=True)
+    cost = pw.IntegerField(null=False)  #法力值消耗(费用)
+    health = pw.IntegerField()  #生命
