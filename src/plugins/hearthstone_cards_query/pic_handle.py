@@ -87,7 +87,7 @@ async def _jjc_choose(bot: Bot, event: MessageEvent):
                         if tep.set in JJCCardsSet:
                             query_dir[tep.dbfid] = tep.name
                             found = True
-                            break
+                            #break
                     if found == False:
                         tep = find_card_by_name(text_list[i + 2])
                         for j in tep:
