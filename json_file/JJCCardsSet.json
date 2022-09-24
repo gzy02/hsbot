@@ -1,11 +1,1 @@
-{
-    "JJCCardsSet": [
-        "CORE",
-        "BOOMSDAY",
-        "DRAGONS",
-        "THE_BARRENS",
-        "STORMWIND",
-        "THE_SUNKEN_CITY",
-        "ALTERAC_VALLEY"
-    ]
-}
+{"JJCCardsSet": ["CORE", "LEGACY", "KARA", "ULDUM", "TROLL", "SCHOLOMANCE", "DARKMOON_FAIRE", "REVENDRETH"]}
