@@ -1,12 +1,11 @@
 {
     "JJCCardsSet": [
-        "CORE",
+        "NAXX",
+        "GVG",
+        "BRM",
+        "TGT",
+        "LOE",
         "LEGACY",
-        "KARA",
-        "ULDUM",
-        "TROLL",
-        "SCHOLOMANCE",
-        "DARKMOON_FAIRE",
-        "REVENDRETH"
+        "EXPERT1"
     ]
 }
