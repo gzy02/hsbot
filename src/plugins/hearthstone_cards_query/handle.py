@@ -1,4 +1,4 @@
-from .utility import connect_and_close_database, cardClassMap, aliasesClassMap, JJCCardsSetPath, SYSTEM_ADMIN_QQ_NUMBER
+from .utility import connect_and_close_database, Classic_Mode_CardClassMap, cardClassMap, aliasesClassMap, JJCCardsSetPath, SYSTEM_ADMIN_QQ_NUMBER
 from . import minion_query, cards_query, jjc_aomi_query, class_performance
 from . import models
 from .query import find_minion_by_body, find_card_by_text, find_card_by_name
@@ -132,18 +132,6 @@ async def _class_performance(bot: Bot, event: MessageEvent):
         text_list = text.split()
         if len(text_list) == 2:
             gametype = -1
-            cardClassMap = {
-                "法师": "MAGE",
-                "猎人": "HUNTER",
-                "牧师": "PRIEST",
-                "术士": "WARLOCK",
-                "潜行者": "ROGUE",
-                "德鲁伊": "DRUID",
-                "萨满": "SHAMAN",
-                "战士": "WARRIOR",
-                "圣骑士": "PALADIN",
-                "恶魔猎手": "DEMONHUNTER"
-            }
 
             res_json = ask_json.get_performance_data()
             if res_json['status'] != 1:
@@ -163,19 +151,8 @@ async def _class_performance(bot: Bot, event: MessageEvent):
                                                  get_win_rate(gametype, res_json, cardClassMap))
                 elif text_list[1] == "经典":  # 没有恶魔猎手
                     gametype = 58
-                    cardClassMap = {
-                        "法师": "MAGE",
-                        "猎人": "HUNTER",
-                        "牧师": "PRIEST",
-                        "术士": "WARLOCK",
-                        "潜行者": "ROGUE",
-                        "德鲁伊": "DRUID",
-                        "萨满": "SHAMAN",
-                        "战士": "WARRIOR",
-                        "圣骑士": "PALADIN"
-                    }
-                    await class_performance.send(message="经典" +
-                                                 get_win_rate(gametype, res_json, cardClassMap))
+                    await class_performance.send(
+                        message="经典" + get_win_rate(gametype, res_json, Classic_Mode_CardClassMap))
                 elif text_list[1] == "竞技场" or text_list[1] == "jjc":
                     gametype = 3
                     await class_performance.send(message="竞技场" +
