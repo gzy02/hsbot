@@ -10,8 +10,9 @@ JJCCardsSetPath = "./json_file/JJCCardsSet.json"
 from .config import SYSTEM_ADMIN_QQ_NUMBER
 
 database_enable = True  #某时刻是否允许访问数据库
-#全名对应数据库中的英文名
-cardClassMap = {
+
+#全名对应数据库中的英文名，经典模式
+Classic_Mode_CardClassMap = {
     "法师": "MAGE",
     "猎人": "HUNTER",
     "牧师": "PRIEST",
@@ -20,8 +21,22 @@ cardClassMap = {
     "德鲁伊": "DRUID",
     "萨满": "SHAMAN",
     "战士": "WARRIOR",
+    "圣骑士": "PALADIN"
+}
+
+#全名对应数据库中的英文名
+cardClassMap = {
+    "法师": "MAGE",
+    "猎人": "HUNTER",
+    "牧师": "PRIEST",
+    "术士": "WARLOCK",
+    "潜行者": "ROGUE",
+    "德鲁伊": "DRUID",
+    "萨满祭司": "SHAMAN",
+    "战士": "WARRIOR",
     "圣骑士": "PALADIN",
-    "恶魔猎手": "DEMONHUNTER"
+    "恶魔猎手": "DEMONHUNTER",
+    "死亡骑士": "DEATHKNIGHT"
 }
 
 #别名对应全名
@@ -38,7 +53,9 @@ aliasesClassMap = {
     "骑士": "圣骑士",
     "骑": "圣骑士",
     "瞎": "恶魔猎手",
-    "瞎子": "恶魔猎手"
+    "瞎子": "恶魔猎手",
+    "dh": "恶魔猎手",
+    "死骑": "死亡骑士"
 }
 
 from typing import Any, Set, Dict, List, Type, Tuple, Union, Optional

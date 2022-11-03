@@ -50,20 +50,6 @@ async def _jjc_choose(bot: Bot, event: MessageEvent):
         text = event.get_plaintext()  #获取纯文本 去除表情和图片
         text_list = text.split()
         if len(text_list) > 2:
-            # 别名，不指定则默认全职业
-            cardClassMap = {
-                "全职业": "ALL",
-                "法师": "MAGE",
-                "猎人": "HUNTER",
-                "牧师": "PRIEST",
-                "术士": "WARLOCK",
-                "潜行者": "ROGUE",
-                "德鲁伊": "DRUID",
-                "萨满祭司": "SHAMAN",
-                "战士": "WARRIOR",
-                "圣骑士": "PALADIN",
-                "恶魔猎手": "DEMONHUNTER"
-            }
             zhiye = text_list[1]
             cur_class = "error"
             if zhiye in aliasesClassMap:
