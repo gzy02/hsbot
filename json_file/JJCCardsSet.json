@@ -1,1 +1,12 @@
-{"JJCCardsSet": ["CORE", "LEGACY", "KARA", "ULDUM", "TROLL", "SCHOLOMANCE", "DARKMOON_FAIRE", "REVENDRETH"]}
+{
+    "JJCCardsSet": [
+        "CORE",
+        "LEGACY",
+        "KARA",
+        "ULDUM",
+        "TROLL",
+        "SCHOLOMANCE",
+        "DARKMOON_FAIRE",
+        "REVENDRETH"
+    ]
+}
