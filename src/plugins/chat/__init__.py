@@ -1,7 +1,7 @@
 #tbot的核心插件
 import openai
 import json
-openai.api_key = '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'
+openai.api_key = ''
 openai.proxy="http://127.0.0.1:7890"#代理
 async def ask_question(prompt):
     response = await openai.ChatCompletion.acreate(
