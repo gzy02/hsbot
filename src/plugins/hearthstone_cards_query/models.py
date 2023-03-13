@@ -42,7 +42,7 @@ class Cards(BaseModel):
         #    )
         #]
     )
-    set = pw.CharField(max_length=32, null=False)  #来自哪个系列或拓展包
+    set = pw.CharField(max_length=32)  #来自哪个系列或拓展包
     text = pw.CharField(max_length=1024)  #卡牌描述
     artist = pw.CharField(max_length=255)  #画师
     flavor = pw.CharField(max_length=2048)  #卡牌趣闻

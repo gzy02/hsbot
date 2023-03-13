@@ -95,7 +95,7 @@ async def _jjcCardsSet_query(bot: Bot, event: MessageEvent):
         with open(JJCCardsSetPath, "r", encoding="utf8") as fd:
             JJCCardsSet: list = json.loads(fd.read())["JJCCardsSet"]
     except Exception as e:
-        jjcCardsSet_query.finish(
+        await jjcCardsSet_query.finish(
             f"[查系列jjc]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}")
     try:
         message = "当前jjc环境中，所有系列如下：\n"

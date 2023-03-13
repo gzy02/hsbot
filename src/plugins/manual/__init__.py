@@ -38,3 +38,10 @@ async def _manual(bot: Bot, event: MessageEvent):
     if event.message_type == "group":
         message_str = f'[CQ:at,qq={event.get_user_id()}]' + message_str
     await manual.send(message=Message(message_str))
+    sleep(3)
+    
+    message_str="ChatGPT使用手册\n使用前请注意：1.单次连续会话只允许4096token，约3000字。因此，达到一定阈值后bot将自动重置你的会话，请在合理时机自行重置会话\n2.为了防止qq群刷屏，单次请求至多1000字\n3.不支持图片、Emoji，请勿在请求中加入这类无关字符\n4.该bot已设置为允许加好友，私聊模式下第二个限制予以解除，但第一个限制仍然存在\n功能列表：\n0.#GPT设定 <你要说的话>\n例：#GPT设定 你现在是游戏《炉石传说》设计师\n更多设定可参考https://github.com/PlexPt/awesome-chatgpt-prompts-zh\n1.#GPT <你要说的话>\n例: #GPT 设计一张1费德鲁伊法术，效果要强\n2.重置会话"
+
+    if event.message_type == "group":
+        message_str = f'[CQ:at,qq={event.get_user_id()}]' + message_str
+    await manual.send(message=Message(message_str))

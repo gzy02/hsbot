@@ -8,7 +8,8 @@ def init_database_from_json(json_url="./json_file/cards.collectible.json"):
     cards_list = json.loads(fd.read())
     fd.close()
     for card in cards_list:
-        if card['set'] != "HERO_SKINS" and card['set'] != "VANILLA":  # 皮肤或者过时的卡牌，不存储
+        if 'set' in card and card['set'] != "HERO_SKINS" and card[
+                'set'] != "VANILLA":  # 皮肤或者过时的卡牌，不存储
             try:
                 text = ""
                 if 'text' in card.keys():
