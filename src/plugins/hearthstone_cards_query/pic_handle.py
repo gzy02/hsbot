@@ -12,6 +12,10 @@ from urllib import parse
 import requests
 from PIL import Image
 from io import BytesIO
+import matplotlib
+
+matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 
 
@@ -44,7 +48,8 @@ async def _jjc_choose(bot: Bot, event: MessageEvent):
         with open(JJCCardsSetPath, "r", encoding="utf8") as fd:
             JJCCardsSet = json.loads(fd.read())["JJCCardsSet"]
     except Exception as e:
-        jjc_choose.finish(f"[jjc选牌]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}")
+        await jjc_choose.finish(
+            f"[jjc选牌]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}")
     try:
         text = event.get_plaintext()  #获取纯文本 去除表情和图片
         text_list = text.split()
@@ -79,7 +84,7 @@ async def _jjc_choose(bot: Bot, event: MessageEvent):
                             if j.set in JJCCardsSet:  # 当前jjc套牌池
                                 query_dir[j.dbfid] = j.name
 
-                res_json = ask_json.get_jjc_data()
+                res_json = await ask_json.get_jjc_data()
                 if res_json['status'] != 1:
                     await jjc_choose.send(
                         message=f"hsbot与hsreplay的网络连接不佳，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]")

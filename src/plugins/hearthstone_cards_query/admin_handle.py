@@ -35,6 +35,8 @@ async def _reset_database(bot: Bot, event: MessageEvent):
             models.HEROCards.drop_table()
         if models.WEAPONCards.table_exists:
             models.WEAPONCards.drop_table()
+        if models.LOCATIONCards.table_exists:
+            models.LOCATIONCards.drop_table()
         if models.Cards.table_exists:
             models.Cards.drop_table()
         """
@@ -44,10 +46,11 @@ async def _reset_database(bot: Bot, event: MessageEvent):
         models.SPELLCards.create_table()
         models.WEAPONCards.create_table()
         models.HEROCards.create_table()
+        models.LOCATIONCards.create_table()
 
         #获取json文件
         json_url = "./json_file/cards.collectible.json"
-        ask_json.get_cards_json(json_url)  #保存起来
+        await ask_json.get_cards_json(json_url)  #保存起来
 
         #根据json文件重置数据库
         init_database_from_json.init_database_from_json(json_url)
@@ -92,7 +95,7 @@ async def _jjcCardsSet_query(bot: Bot, event: MessageEvent):
         with open(JJCCardsSetPath, "r", encoding="utf8") as fd:
             JJCCardsSet: list = json.loads(fd.read())["JJCCardsSet"]
     except Exception as e:
-        jjcCardsSet_query.finish(
+        await jjcCardsSet_query.finish(
             f"[查系列jjc]程序错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}")
     try:
         message = "当前jjc环境中，所有系列如下：\n"

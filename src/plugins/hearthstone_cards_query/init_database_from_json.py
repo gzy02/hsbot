@@ -8,7 +8,8 @@ def init_database_from_json(json_url="./json_file/cards.collectible.json"):
     cards_list = json.loads(fd.read())
     fd.close()
     for card in cards_list:
-        if card['set'] != "HERO_SKINS" and card['set'] != "VANILLA":  # 皮肤或者过时的卡牌，不存储
+        if 'set' in card and card['set'] != "HERO_SKINS" and card[
+                'set'] != "VANILLA":  # 皮肤或者过时的卡牌，不存储
             try:
                 text = ""
                 if 'text' in card.keys():
@@ -68,6 +69,11 @@ def init_database_from_json(json_url="./json_file/cards.collectible.json"):
                                               cost=card['cost'],
                                               attack=card['attack'],
                                               durability=card['durability'])
+
+                elif card['type'] == "LOCATION":
+                    models.LOCATIONCards.create(Cardid=card['dbfId'],
+                                                cost=card['cost'],
+                                                health=card['health'])
             except Exception as e:
                 print(repr(e))
                 print(card)

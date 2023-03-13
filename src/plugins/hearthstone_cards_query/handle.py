@@ -15,7 +15,7 @@ async def _jjc_aomi_query(bot: Bot, event: MessageEvent):
         with open(JJCCardsSetPath, "r", encoding="utf8") as fd:
             JJCCardsSet = json.loads(fd.read())["JJCCardsSet"]
     except Exception as e:
-        jjc_aomi_query.finish(
+        await jjc_aomi_query.finish(
             f"打开JJCCardsSet.json文件错误，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]\n错误如下：\n{repr(e)}")
 
     try:
@@ -133,7 +133,7 @@ async def _class_performance(bot: Bot, event: MessageEvent):
         if len(text_list) == 2:
             gametype = -1
 
-            res_json = ask_json.get_performance_data()
+            res_json = await ask_json.get_performance_data()
             if res_json['status'] != 1:
                 await class_performance.send(
                     message=f"hsbot与hsreplay的网络连接不佳，请联系系统管理员[QQ:{SYSTEM_ADMIN_QQ_NUMBER}]")

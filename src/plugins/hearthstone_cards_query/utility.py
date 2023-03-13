@@ -36,7 +36,7 @@ cardClassMap = {
     "战士": "WARRIOR",
     "圣骑士": "PALADIN",
     "恶魔猎手": "DEMONHUNTER",
-    #"死亡骑士": "DEATHKNIGHT"
+    "死亡骑士": "DEATHKNIGHT"
 }
 
 #别名对应全名
