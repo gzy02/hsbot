@@ -11,13 +11,11 @@ import base64
 from urllib import parse
 import requests
 from PIL import Image
+
 from io import BytesIO
 import matplotlib
-
 matplotlib.use('Agg')
-
 import matplotlib.pyplot as plt
-
 
 def Get_jjc_image(rowLabels: list, cellText: list):
     """获取图片"""
@@ -33,11 +31,13 @@ def Get_jjc_image(rowLabels: list, cellText: list):
     table.set_fontsize(10)  #字体大小
     table.scale(1, 2)  #表格缩放
     plt.axis('off')
-    canvas = fig.canvas
+    
     buffer = BytesIO()
-    canvas.print_png(buffer)
-    data = buffer.getvalue()
-    return data
+    fig.savefig(buffer, format='png')
+    buffer.seek(0)
+    
+    plt.close(fig)
+    return buffer.getvalue()
 
 
 @jjc_choose.handle()

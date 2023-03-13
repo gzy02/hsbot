@@ -14,7 +14,7 @@ nb-cli = "^0.6.0"
 
 [tool.nonebot]
 # 外部plugins
-plugins = ["nonebot_plugin_fortune"]
+plugins = ["nonebot_plugin_fortune", "nonebot_plugin_status"]
 plugin_dirs = ["src/plugins"]
 
 [build-system]

@@ -8,7 +8,7 @@ manual = on_fullmatch(msg=("manual", "使用手册", "手册", "指令", "man", 
 @manual.handle()
 async def _manual(bot: Bot, event: MessageEvent):
     """使用手册"""
-    message_str = "HSBot 使用手册"
+    message_str = "HSBot 使用手册\n0. 服务器状态查看 指令：\n<状态/status>"
     message_str += "\n1. jjc选牌助手 指令: \n<jjc/jjc选牌/选牌/竞技场选牌> <职业名/全职业> [卡牌列表]\n例: jjc选牌 德 团本 哥利亚 伊瑟拉"
     message_str += "\n2. jjc奥秘提示 指令: \n<jjc猜奥秘/jjc查奥秘/jjc奥秘> <职业名>\n例: jjc猜奥秘 骑士"
     message_str += "\n3. 卡牌查询 指令: \n查卡牌 <卡牌规则>\n查随从 <随从身材>\n例: 查随从 9-3-9"
@@ -26,14 +26,14 @@ async def _manual(bot: Bot, event: MessageEvent):
     sleep(3)
 
     message_str = "HSBot 使用手册(管理员)"
-    message_str += "\n11.查系列(游戏更新时管理员可以用此指令查询新系列在数据库中的名字) 指令: \n查系列/查询所有系列"
-    message_str += "\n12.重置jjc环境(游戏更新时管理员可以用此指令重置jjc环境) 指令: \n<重置jjc/重置jjc系列/重置jjc环境> <新的jjc系列列表>\n例: 重置jjc CORE BOOMSDAY DRAGONS THE_BARRENS STORMWIND THE_SUNKEN_CITY ALTERAC_VALLEY"
+    message_str += "\n1.查系列(游戏更新时管理员可以用此指令查询新系列在数据库中的名字) 指令: \n查系列/查询所有系列"
+    message_str += "\n2.重置jjc环境(游戏更新时管理员可以用此指令重置jjc环境) 指令: \n<重置jjc/重置jjc系列/重置jjc环境> <新的jjc系列列表>\n例: 重置jjc CORE BOOMSDAY DRAGONS THE_BARRENS STORMWIND THE_SUNKEN_CITY ALTERAC_VALLEY"
 
-    message_str += "\n13.查系列jjc(游戏更新时管理员可以用此指令查询jjc是否将新系列设置成功) 指令: \n查系列jjc"
-    message_str += "\n14.重置数据库(游戏更新时管理员可以用此指令更新新的卡包) 指令: \n重置数据库"
-    message_str += "\n15.查询管理员 指令: \n查询管理员/管理员查询"
-    message_str += "\n16.添加管理员(管理员可以用此指令添加新的管理员) 指令: \n添加管理员 <管理员qq号>"
-    message_str += "\n17.删除管理员(系统管理员可以用此指令删除管理员) 指令: \n删除管理员 <管理员qq号>"
+    message_str += "\n3.查系列jjc(游戏更新时管理员可以用此指令查询jjc是否将新系列设置成功) 指令: \n查系列jjc"
+    message_str += "\n4.重置数据库(游戏更新时管理员可以用此指令更新新的卡包) 指令: \n重置数据库"
+    message_str += "\n5.查询管理员 指令: \n查询管理员/管理员查询"
+    message_str += "\n6.添加管理员(管理员可以用此指令添加新的管理员) 指令: \n添加管理员 <管理员qq号>"
+    message_str += "\n7.删除管理员(系统管理员可以用此指令删除管理员) 指令: \n删除管理员 <管理员qq号>"
 
     if event.message_type == "group":
         message_str = f'[CQ:at,qq={event.get_user_id()}]' + message_str
