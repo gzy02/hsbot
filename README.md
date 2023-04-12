@@ -26,6 +26,16 @@ _✨基于[nonebot2](https://github.com/nonebot/nonebot2)的炉石机器人，�
 ## 文档
 待更新
 
+## To-do
+正事
+- jjc榜单查询
+- jjc选牌交互方式优化
+
+娱乐
+- 今日人品
+- 复读机（检测到复读自动复读一次）
+- 信息记录（记录用户提交的特定语句A和B，用户需要时可用语句A获取语句B）
+
 ## 鸣谢
 - [Onebot](https://onebot.dev/)：简洁、通用、可扩展，只需使用一套标准即可为各种平台编写聊天机器人。
 - [Nonebot2](https://github.com/nonebot/nonebot2)：跨平台 Python 异步聊天机器人框架。
