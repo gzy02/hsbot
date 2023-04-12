@@ -55,7 +55,10 @@ aliasesClassMap = {
     "瞎": "恶魔猎手",
     "瞎子": "恶魔猎手",
     "dh": "恶魔猎手",
-    "死骑": "死亡骑士"
+    "DH":"恶魔猎手",
+    "死骑": "死亡骑士",
+    "dk": "死亡骑士",
+    "DK":"死亡骑士"
 }
 
 from typing import Any, Set, Dict, List, Type, Tuple, Union, Optional
