@@ -36,10 +36,27 @@ async def get_performance_data() -> dict:
         return res
 
 
+import datetime
+
+jjc_data_cache = {'status': 0, 'series': None, 'timestamp': None}
+
+
+def should_use_jjc_data_cache():
+    global jjc_data_cache
+    if jjc_data_cache['timestamp'] is None:
+        return False
+    now = datetime.datetime.now()
+    diff = now - jjc_data_cache['timestamp']
+    return diff < datetime.timedelta(hours=12)
+
+
 async def get_jjc_data() -> dict:
     """
     :return: jjc data
     """
+    global jjc_data_cache
+    if should_use_jjc_data_cache():
+        return jjc_data_cache
     url = 'https://hsreplay.net/analytics/query/card_list_free/?GameType=ARENA'
 
     async with httpx.AsyncClient() as client:
@@ -54,4 +71,6 @@ async def get_jjc_data() -> dict:
                 res['status'] = 0
         except:
             res['status'] = 0
+        res['timestamp'] = datetime.datetime.now()
+        jjc_data_cache = res
         return res
